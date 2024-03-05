@@ -112,10 +112,8 @@
     "web": "yarn workspace @uniswap/interface"
   },
   "workspaces": [
-    "apps/web",
-    "packages/eslint-config",
-    "packages/ui",
-    "packages/utilities",
+    "apps/*",
+    "packages/*",
     "config/*"
   ]
 }

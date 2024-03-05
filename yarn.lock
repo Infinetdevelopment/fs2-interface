@@ -13550,7 +13550,7 @@ __metadata:
     "@uniswap/analytics-events": 2.31.0
     "@uniswap/eslint-config": "workspace:^"
     "@uniswap/ethers-rs-mobile": 0.0.5
-    "@uniswap/sdk-core": 4.1.2
+    "@uniswap/sdk-core": "Infinetdevelopment/fs2-sdk-core#99b91f02cdbb47d136d741261254d23ad9d229eb"
     "@uniswap/v3-sdk": 3.10.2
     "@walletconnect/core": 2.11.2
     "@walletconnect/react-native-compat": 2.11.2

@@ -1,7 +1,9 @@
-import { ChainId, SUPPORTED_CHAINS, SupportedChainsType, V2_ROUTER_ADDRESSES } from '@uniswap/sdk-core'
+import {ChainId, SUPPORTED_CHAINS, SupportedChainsType, V2_ROUTER_ADDRESSES} from '@uniswap/sdk-core'
 
 export const CHAIN_IDS_TO_NAMES = {
   [ChainId.MAINNET]: 'mainnet',
+  [ChainId.PULSECHAIN]: 'pulsechain',
+  [ChainId.PULSECHAIN_TESTNET]: 'pulsechain_testnet',
   [ChainId.GOERLI]: 'goerli',
   [ChainId.SEPOLIA]: 'sepolia',
   [ChainId.POLYGON]: 'polygon',
@@ -22,12 +24,22 @@ const NOT_YET_UX_SUPPORTED_CHAIN_IDS: number[] = [
   ChainId.BASE_GOERLI,
   ChainId.ARBITRUM_SEPOLIA,
   ChainId.OPTIMISM_SEPOLIA,
+  ChainId.ZORA,
+  ChainId.ZORA_SEPOLIA,
+  ChainId.MOONBEAM,
+  ChainId.ROOTSTOCK,
 ]
 
 // TODO: include BASE_GOERLI, OPTIMISM_SEPOLIA, or ARBITRUM_SEPOLIA when routing is implemented
 export type SupportedInterfaceChain = Exclude<
   SupportedChainsType,
-  ChainId.BASE_GOERLI | ChainId.ARBITRUM_SEPOLIA | ChainId.OPTIMISM_SEPOLIA
+  ChainId.BASE_GOERLI |
+  ChainId.ARBITRUM_SEPOLIA |
+  ChainId.OPTIMISM_SEPOLIA |
+  ChainId.ZORA |
+  ChainId.ZORA_SEPOLIA |
+  ChainId.MOONBEAM |
+  ChainId.ROOTSTOCK
 >
 
 export function isSupportedChain(
@@ -53,6 +65,7 @@ export function asSupportedChain(
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.MAINNET,
+  ChainId.PULSECHAIN,
   ChainId.POLYGON,
   ChainId.CELO,
   ChainId.OPTIMISM,
@@ -75,6 +88,7 @@ export const TESTNET_CHAIN_IDS = [
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM_GOERLI,
   ChainId.CELO_ALFAJORES,
+  ChainId.PULSECHAIN_TESTNET
 ] as const
 
 /**
@@ -82,6 +96,8 @@ export const TESTNET_CHAIN_IDS = [
  */
 export const L1_CHAIN_IDS = [
   ChainId.MAINNET,
+  ChainId.PULSECHAIN,
+  ChainId.PULSECHAIN_TESTNET,
   ChainId.GOERLI,
   ChainId.SEPOLIA,
   ChainId.POLYGON,
@@ -118,6 +134,8 @@ export function getChainPriority(chainId: ChainId): number {
     case ChainId.MAINNET:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
+    case ChainId.PULSECHAIN:
+    case ChainId.PULSECHAIN_TESTNET:
       return 0
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:

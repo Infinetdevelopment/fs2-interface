@@ -268,6 +268,20 @@ export const MNW = new Token(
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
   ...(WETH9 as Record<ChainId, Token>),
+  [ChainId.PULSECHAIN]: new Token(
+    ChainId.PULSECHAIN,
+    '0xA1077a294dDE1B09bB078844df40758a5D0f9a27',
+    18,
+    'WPLS',
+    'Wrapped Pulse',
+  ),
+  [ChainId.PULSECHAIN_TESTNET]: new Token(
+    ChainId.PULSECHAIN_TESTNET,
+    '0xA1077a294dDE1B09bB078844df40758a5D0f9a27',
+    18,
+    'WPLS',
+    'Wrapped Pulse',
+  ),
   [ChainId.OPTIMISM]: new Token(
     ChainId.OPTIMISM,
     '0x4200000000000000000000000000000000000006',
@@ -458,6 +472,8 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
 export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in ChainId]?: string } } = {
   USDC: {
     [ChainId.MAINNET]: USDC_MAINNET.address,
+    [ChainId.PULSECHAIN]: USDC_MAINNET.address,
+    [ChainId.PULSECHAIN_TESTNET]: USDC_MAINNET.address,
     [ChainId.ARBITRUM_ONE]: USDC_ARBITRUM.address,
     [ChainId.ARBITRUM_GOERLI]: USDC_ARBITRUM_GOERLI.address,
     [ChainId.OPTIMISM]: USDC_OPTIMISM.address,
@@ -476,6 +492,8 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in ChainId]?: s
 
 const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.MAINNET]: [USDC_MAINNET, DAI, USDT],
+  [ChainId.PULSECHAIN]: [USDC_MAINNET, DAI, USDT],
+  [ChainId.PULSECHAIN_TESTNET]: [USDC_MAINNET, DAI, USDT],
   [ChainId.ARBITRUM_ONE]: [USDC_ARBITRUM, DAI_ARBITRUM_ONE],
   [ChainId.ARBITRUM_GOERLI]: [USDC_ARBITRUM_GOERLI],
   [ChainId.OPTIMISM]: [USDC_OPTIMISM, DAI_OPTIMISM],
@@ -494,6 +512,9 @@ const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.BASE_GOERLI]: [],
   [ChainId.OPTIMISM_SEPOLIA]: [USDC_SEPOLIA],
   [ChainId.ARBITRUM_SEPOLIA]: [],
+  [ChainId.ZORA]: [],
+  [ChainId.ZORA_SEPOLIA]: [],
+  [ChainId.ROOTSTOCK]: [],
 }
 
 export function isStablecoin(currency?: Currency): boolean {

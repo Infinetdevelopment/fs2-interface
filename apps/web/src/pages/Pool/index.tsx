@@ -14,17 +14,16 @@ import { useFilterPossiblyMaliciousPositions } from 'hooks/useFilterPossiblyMali
 import { useNetworkSupportsV2 } from 'hooks/useNetworkSupportsV2'
 import { useV3Positions } from 'hooks/useV3Positions'
 import { useMemo } from 'react'
-import { AlertTriangle, BookOpen, ChevronDown, ChevronsRight, Inbox, Layers } from 'react-feather'
+import { AlertTriangle, ChevronDown, Inbox, Layers } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { useUserHideClosedPositions } from 'state/user/hooks'
 import styled, { css, useTheme } from 'styled-components'
-import { HideSmall, ThemedText } from 'theme/components'
+import { ThemedText } from 'theme/components'
 import { PositionDetails } from 'types/position'
 
 import { ProtocolVersion } from 'graphql/data/__generated__/types-and-hooks'
 import { PoolVersionMenu } from 'pages/Pool/shared'
 import { ApplicationModal } from 'state/application/reducer'
-import CTACards from './CTACards'
 import { LoadingRows } from './styled'
 
 const PageWrapper = styled(AutoColumn)`
@@ -222,16 +221,16 @@ export default function Pool() {
   const showConnectAWallet = Boolean(!account)
 
   const menuItems = [
-    {
-      content: (
-        <PoolMenuItem>
-          <Trans>Migrate</Trans>
-          <ChevronsRight size={16} />
-        </PoolMenuItem>
-      ),
-      link: '/migrate/v2',
-      external: false,
-    },
+    // {
+    //   content: (
+    //     <PoolMenuItem>
+    //       <Trans>Migrate</Trans>
+    //       <ChevronsRight size={16} />
+    //     </PoolMenuItem>
+    //   ),
+    //   link: '/migrate/v2',
+    //   external: false,
+    // },
     {
       content: (
         <PoolMenuItem>
@@ -242,16 +241,16 @@ export default function Pool() {
       link: '/pools/v2',
       external: false,
     },
-    {
-      content: (
-        <PoolMenuItem>
-          <Trans>Learn</Trans>
-          <BookOpen size={16} />
-        </PoolMenuItem>
-      ),
-      link: 'https://support.uniswap.org/hc/en-us/categories/8122334631437-Providing-Liquidity-',
-      external: true,
-    },
+    // {
+    //   content: (
+    //     <PoolMenuItem>
+    //       <Trans>Learn</Trans>
+    //       <BookOpen size={16} />
+    //     </PoolMenuItem>
+    //   ),
+    //   link: 'https://support.uniswap.org/hc/en-us/categories/8122334631437-Providing-Liquidity-',
+    //   external: true,
+    // },
   ]
 
   return (
@@ -331,9 +330,6 @@ export default function Pool() {
                 </ErrorContainer>
               )}
             </MainContentWrapper>
-            <HideSmall>
-              <CTACards />
-            </HideSmall>
           </AutoColumn>
         </AutoColumn>
       </PageWrapper>

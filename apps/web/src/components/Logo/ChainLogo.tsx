@@ -14,9 +14,10 @@ import { ReactComponent as celoLight } from './ChainSymbols/celo_light.svg'
 import { ReactComponent as ethereum } from './ChainSymbols/ethereum.svg'
 import { ReactComponent as optimism } from './ChainSymbols/optimism.svg'
 import { ReactComponent as polygon } from './ChainSymbols/polygon.svg'
-
+import { ReactComponent as pulsechain } from './ChainSymbols/SVG/pulsechain.svg'
+import { ReactComponent as pulsechain_selected } from './ChainSymbols/SVG/pulsechain_selected.svg'
 type SVG = FunctionComponent<React.SVGProps<SVGSVGElement>>
-type ChainUI = { Symbol: SVG; bgColor: string; textColor: string }
+type ChainUI = { Symbol: SVG; SymbolSelected: SVG; bgColor: string; textColor: string }
 
 export function getChainUI(chainId: SupportedInterfaceChain, darkMode: boolean): ChainUI
 export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undefined {
@@ -26,13 +27,23 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
     case ChainId.SEPOLIA:
       return {
         Symbol: ethereum,
+        SymbolSelected: ethereum,
         bgColor: '#6B8AFF33',
         textColor: '#6B8AFF',
+      }
+    case ChainId.PULSECHAIN:
+    case ChainId.PULSECHAIN_TESTNET:
+      return {
+        Symbol: pulsechain,
+        SymbolSelected: pulsechain_selected,
+        bgColor: '#000000',
+        textColor: '#9558FF',
       }
     case ChainId.POLYGON:
     case ChainId.POLYGON_MUMBAI:
       return {
         Symbol: polygon,
+        SymbolSelected: polygon,
         bgColor: '#9558FF33',
         textColor: '#9558FF',
       }
@@ -40,6 +51,7 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
     case ChainId.ARBITRUM_GOERLI:
       return {
         Symbol: arbitrum,
+        SymbolSelected: arbitrum,
         bgColor: '#00A3FF33',
         textColor: '#00A3FF',
       }
@@ -47,6 +59,7 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
     case ChainId.OPTIMISM_GOERLI:
       return {
         Symbol: optimism,
+        SymbolSelected: optimism,
         bgColor: '#FF042033',
         textColor: '#FF0420',
       }
@@ -55,29 +68,34 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
       return darkMode
         ? {
             Symbol: celo,
+            SymbolSelected: celo,
             bgColor: '#FCFF5233',
             textColor: '#FCFF52',
           }
         : {
             Symbol: celoLight,
+            SymbolSelected: celo,
             bgColor: '#FCFF5299',
             textColor: '#655947',
           }
     case ChainId.AVALANCHE:
       return {
         Symbol: avax,
+        SymbolSelected: avax,
         bgColor: '#E8414233',
         textColor: '#E84142',
       }
     case ChainId.BNB:
       return {
         Symbol: bnb,
+        SymbolSelected: bnb,
         bgColor: '#EAB20033',
         textColor: '#EAB200',
       }
     case ChainId.BASE:
       return {
         Symbol: base,
+        SymbolSelected: base,
         bgColor: '#0052FF33',
         textColor: '#0052FF',
       }
@@ -96,6 +114,7 @@ type ChainLogoProps = {
   style?: CSSProperties
   testId?: string
   fillContainer?: boolean
+  isSelected?: Boolean
 }
 export function ChainLogo({
   chainId,
@@ -105,6 +124,7 @@ export function ChainLogo({
   borderRadius = getDefaultBorderRadius(size),
   testId,
   fillContainer = false,
+  isSelected = false,
 }: ChainLogoProps) {
   const darkMode = useIsDarkMode()
   const { surface2 } = useTheme()
@@ -112,7 +132,7 @@ export function ChainLogo({
   if (!isSupportedChain(chainId)) return null
   const { label } = getChainInfo(chainId)
 
-  const { Symbol, bgColor } = getChainUI(chainId, darkMode)
+  const { Symbol, SymbolSelected, bgColor } = getChainUI(chainId, darkMode)
   const iconSize = fillContainer ? '100%' : size
 
   return (
@@ -127,7 +147,8 @@ export function ChainLogo({
       <title id="titleID">{`${label} logo`}</title>
       <rect rx={borderRadius} fill={surface2} width={iconSize} height={iconSize} />
       <rect rx={borderRadius} fill={bgColor} width={iconSize} height={iconSize} />
-      <Symbol width={iconSize} height={iconSize} />
+      {!isSelected && <Symbol width={iconSize} height={iconSize} />}
+      {isSelected && <SymbolSelected width={iconSize} height={iconSize} />}
     </svg>
   )
 }

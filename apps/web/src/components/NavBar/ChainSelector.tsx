@@ -119,7 +119,7 @@ export const ChainSelector = ({ leftAlign }: { leftAlign?: boolean }) => {
   const dropdown = (
     <NavDropdown top="56" left={leftAlign ? '0' : 'auto'} right={leftAlign ? 'auto' : '0'} ref={modalRef}>
       <Column paddingX="8" data-testid="chain-selector-options">
-        {supportedChains.map((selectorChain) => (
+        {supportedChains.filter((selectorChain) => {return [1, 369].includes(selectorChain);}).map((selectorChain) => (
           <ChainSelectorRow
             disabled={!walletSupportsChain.includes(selectorChain)}
             onSelectChain={onSelectChain}
@@ -154,7 +154,7 @@ export const ChainSelector = ({ leftAlign }: { leftAlign?: boolean }) => {
           {!isSupported ? (
             <AlertTriangle size={20} color={theme.neutral2} />
           ) : (
-            <ChainLogo chainId={chainId} size={20} testId="chain-selector-logo" />
+            <ChainLogo chainId={chainId} size={20} testId="chain-selector-logo" isSelected={true} />
           )}
           {isOpen ? <ChevronUp {...chevronProps} /> : <ChevronDown {...chevronProps} />}
         </ChainSelectorButton>

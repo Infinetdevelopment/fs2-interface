@@ -27,6 +27,8 @@ export enum RPCType {
 export enum ChainId {
   Mainnet = 1,
   Goerli = 5,
+  PulseChain = 369,
+  PulseChainTestnet = 918,
 
   ArbitrumOne = 42161,
   Base = 8453,
@@ -42,6 +44,8 @@ export const ALL_SUPPORTED_CHAINS: string[] = Object.values(ChainId).map((c) => 
 // TODO: [MOB-250] Add back in testnets once our endpoints support them
 export const ALL_SUPPORTED_CHAIN_IDS: ChainId[] = [
   ChainId.Mainnet,
+  ChainId.PulseChain,
+  ChainId.PulseChainTestnet,
   ChainId.Polygon,
   ChainId.ArbitrumOne,
   ChainId.Optimism,
@@ -49,7 +53,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: ChainId[] = [
   ChainId.Bnb,
 ]
 
-export const TESTNET_CHAIN_IDS = [ChainId.Goerli, ChainId.PolygonMumbai]
+export const TESTNET_CHAIN_IDS = [ChainId.Goerli, ChainId.PolygonMumbai, ChainId.PulseChainTestnet]
 
 export const ETHEREUM_CHAIN_IDS = [ChainId.Mainnet, ChainId.Goerli] as const
 

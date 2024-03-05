@@ -131,7 +131,7 @@ export function Hero({ scrollToRef, transition }: HeroProps) {
         <Box direction="column" align="center">
           <StyledH1>
             <RiseInText delay={0.0}>
-              <Trans>Swap</Trans>
+              <Trans>FreedomSwap</Trans>
             </RiseInText>{' '}
             <RiseInText delay={0.1}>
               <Trans>anytime,</Trans>
@@ -152,7 +152,7 @@ export function Hero({ scrollToRef, transition }: HeroProps) {
 
         <RiseIn delay={0.3}>
           <Subheading>
-            <Trans>The largest onchain marketplace. Buy and sell crypto on Ethereum and 7+ other chains.</Trans>
+            <Trans>Free yourself from debt slavery</Trans>
           </Subheading>
         </RiseIn>
       </Center>

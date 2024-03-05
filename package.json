@@ -39,7 +39,8 @@
     "immer": "9.0.21",
     "@uniswap/v2-sdk": "4.1.0",
     "@apollo/client": "3.7.11",
-    "@uniswap/sdk-core": "4.1.2",
+    "@uniswap/sdk-core": "Infinetdevelopment/fs2-sdk-core#99b91f02cdbb47d136d741261254d23ad9d229eb",
+    "@uniswap/universal-router-sdk": "Infinetdevelopment/fs2-universal-router-sdk#84cca3395e315796c81ac2ef81f84429170385a3",
     "@react-navigation/routers": "6.1.9",
     "@react-navigation/core": "6.2.2",
     "@sideway/formula": "3.0.1",
@@ -111,8 +112,10 @@
     "web": "yarn workspace @uniswap/interface"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*",
+    "apps/web",
+    "packages/eslint-config",
+    "packages/ui",
+    "packages/utilities",
     "config/*"
   ]
 }

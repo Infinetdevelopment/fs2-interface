@@ -36,6 +36,12 @@ export const FALLBACK_URLS = {
     'https://rpc.ankr.com/eth',
     'https://eth-mainnet.public.blastapi.io',
   ],
+  [ChainId.PULSECHAIN]: [
+    'https://scan.mypinata.cloud/ipfs/bafybeidn64pd2u525lmoipjl4nh3ooa2imd7huionjsdepdsphl5slfowy/#/',
+  ],
+  [ChainId.PULSECHAIN_TESTNET]: [
+    'https://scan.v4.testnet.pulsechain.com',
+  ],
   [ChainId.GOERLI]: [
     // "Safe" URLs
     'https://rpc.goerli.mudit.blog/',
@@ -134,6 +140,12 @@ export const RPC_URLS = {
     `https://mainnet.infura.io/v3/${INFURA_KEY}`,
     QUICKNODE_MAINNET_RPC_URL,
     ...FALLBACK_URLS[ChainId.MAINNET],
+  ],
+  [ChainId.PULSECHAIN]: [
+    'https://scan.mypinata.cloud/ipfs/bafybeidn64pd2u525lmoipjl4nh3ooa2imd7huionjsdepdsphl5slfowy/#/',
+  ],
+  [ChainId.PULSECHAIN_TESTNET]: [
+    'https://scan.v4.testnet.pulsechain.com',
   ],
   [ChainId.GOERLI]: [`https://goerli.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[ChainId.GOERLI]],
   [ChainId.SEPOLIA]: [`https://sepolia.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[ChainId.SEPOLIA]],

@@ -17,6 +17,8 @@ export const RPC_PROVIDERS: { [key in SupportedInterfaceChain]: StaticJsonRpcPro
     providerFactory(ChainId.MAINNET),
     providerFactory(ChainId.MAINNET, 1),
   ]),
+  [ChainId.PULSECHAIN]: providerFactory(ChainId.PULSECHAIN),
+  [ChainId.PULSECHAIN_TESTNET]: providerFactory(ChainId.PULSECHAIN_TESTNET),
   [ChainId.GOERLI]: providerFactory(ChainId.GOERLI),
   [ChainId.SEPOLIA]: providerFactory(ChainId.SEPOLIA),
   [ChainId.OPTIMISM]: providerFactory(ChainId.OPTIMISM),
@@ -37,6 +39,8 @@ export const RPC_PROVIDERS: { [key in SupportedInterfaceChain]: StaticJsonRpcPro
 
 export const DEPRECATED_RPC_PROVIDERS: { [key in SupportedInterfaceChain]: StaticJsonRpcProvider } = {
   [ChainId.MAINNET]: providerFactory(ChainId.MAINNET),
+  [ChainId.PULSECHAIN]: providerFactory(ChainId.PULSECHAIN),
+  [ChainId.PULSECHAIN_TESTNET]: providerFactory(ChainId.PULSECHAIN_TESTNET),
   [ChainId.GOERLI]: providerFactory(ChainId.GOERLI),
   [ChainId.SEPOLIA]: providerFactory(ChainId.SEPOLIA),
   [ChainId.OPTIMISM]: providerFactory(ChainId.OPTIMISM),
